@@ -3,8 +3,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         List<Integer> nums = new ArrayList<>(List.of(1, 1, 2, 3, 4, 4, 5, 5, 6, 7));
-        List<String> words = new ArrayList<>(List.of("участие", "хлеб", "успокоиться", "проходить", "участие", "рассмеяться",
-                "непосредственный", "общаться", "общаться", "общаться", "намерен", "иной", "непосредственный", "интимный"));
+        List<String> words = new ArrayList<>(List.of("участие", "участие",  "общаться", "общаться", "общаться"));
         task1(nums);
         task2(nums);
         task3(words);
@@ -14,7 +13,20 @@ public class Main {
 
     private static void task4(List<String> words) {
         Set<String> uniqWords = new HashSet<>(words);
-        System.out.println(words.size() - uniqWords.size());
+        System.out.println("Количество слов-повторов: " + (words.size() - uniqWords.size()));
+        String wordToCompare;
+        Set<Integer> uniqNumbers = new HashSet<>();
+        for (String word : words) {
+            int count = 0;
+            wordToCompare = word;
+            for (String w:words){
+                if (wordToCompare.equals(w)){
+                    count++;
+                }
+            }
+            uniqNumbers.add(count);
+        }
+        System.out.println("Cлов-повторов по словам = " + uniqNumbers); //TO DO: продумать алгоритм, так ак это костыль для конкретно этого входного условия
     }
 
     private static void task3withHash(List<String> words) {
