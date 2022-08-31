@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,17 +8,18 @@ public class Main {
         task1(nums);
         task2(nums);
         task3(words);
-        task4(words, "общаться");
+        task3withHash(words);
+        task4(words);
     }
 
-    private static void task4(List<String> words, String wordToFind) {
-        int count = 0;
-        for (String word : words) {
-            if (Objects.equals(word, wordToFind)) {
-                count++;
-            }
-        }
-        System.out.println("Слово " + "\"" + wordToFind + "\"" + " повторяется в списке слов " + count + " раза");
+    private static void task4(List<String> words) {
+        Set<String> uniqWords = new HashSet<>(words);
+        System.out.println(words.size() - uniqWords.size());
+    }
+
+    private static void task3withHash(List<String> words) {
+       Set<String> uniqWords = new HashSet<>(words);
+        System.out.println(uniqWords);
         System.out.println();
     }
 
